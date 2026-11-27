@@ -1,6 +1,6 @@
 # calc64
 
-<p align="center"><img src="site/icon-192.png" width="128" height="128" alt="Calc64 のアイコン（民訴法64条の「64」をモチーフにしたロゴ）"></p>
+<p align="center"><img src="site/icon-192.png" width="128" height="128" alt="Calc64 のアイコン（「負担割合」の看板を持ち、一切れを分けている円グラフのキャラクター）"></p>
 
 訴訟費用の負担割合（民訴法61条・64条）を、当事者間の請求額と認容額から計算し、主文例を作る Web アプリです（Calc64 ― 訴訟費用負担割合計算機）。**ブラウザの中だけで動き、入力した情報をどこにも送りません。**
 
@@ -44,6 +44,7 @@
 | `site/js/app/main.js` | 画面 |
 | `tests/` | テスト（`node tests/run.mjs`。Node.js 18 以上、追加のパッケージは不要） |
 | `docs/00_設計.md` | 設計（計算の考え方） |
+| `tools/icon/` | アイコンの元（SVG）と SNS 用のプレビュー画像 |
 
 ## 誤りの報告・改善の提案
 
