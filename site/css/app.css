@@ -1,0 +1,91 @@
+/* Calc64 ― 見た目。配色は姉妹アプリ（訴訟費用額計算機）にそろえ、濃い青・白いカード */
+:root {
+  --primary: #004878; --primary-light: #e8f0f6; --border: #d6dbdf; --bg: #fafafa; --card: #fff;
+  --text: #201f1e; --sub: #605e5c; --danger: #a80000; --danger-bg: #fde7e9; --warn: #9d5d00; --warn-bg: #fff4ce; --ok: #107c10;
+  --radius: 6px;
+  font-family: "BIZ UDPGothic", "Yu Gothic UI", "Meiryo", "Hiragino Sans", "Noto Sans JP", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.55; padding-bottom: 24px; }
+.top { background: var(--primary); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 8px 20px; gap: 12px; flex-wrap: wrap; }
+.brand { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.brand img { border-radius: 6px; background: #fff; }
+.brand-sub { font-size: 15px; font-weight: 400; opacity: .9; }
+.mver { font-size: 12px; opacity: .85; }
+.privacy { margin: 0; padding: 6px 20px; font-size: 12px; color: var(--sub); background: #f3f6f8; border-bottom: 1px solid var(--border); }
+main { padding: 16px 20px; max-width: 1400px; margin: 0 auto; }
+.license { max-width: 1400px; margin: 8px auto 0; padding: 0 20px; font-size: 12px; color: var(--sub); }
+.license a { color: var(--sub); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; }
+.card h2 { font-size: 16px; margin: 0 0 8px; color: var(--primary); }
+.card h3 { font-size: 14px; margin: 14px 0 6px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 6px 0; }
+.hint { font-size: 12.5px; color: var(--sub); margin: 6px 0; }
+.err { color: var(--danger); }
+.warn { color: var(--warn); }
+.ok { color: var(--ok); }
+.sub { color: var(--sub); font-size: 12.5px; }
+.in { font: inherit; padding: 5px 8px; border: 1px solid #b9c0c6; border-radius: 4px; background: #fff; min-width: 0; }
+.in:focus, .btn:focus-visible { outline: 2px solid #0f6cbd; outline-offset: 1px; }
+.in.bad { border-color: var(--danger); background: var(--danger-bg); }
+.in.name { width: 16em; }
+.in.amt { width: 11em; text-align: right; }
+.in.memo { width: 9em; }
+.in.frac { width: 5.5em; text-align: center; padding: 2px 4px; }
+.in.frac.edited { background: var(--warn-bg); }
+.in.opt { width: 5em; text-align: right; }
+.btn { font: inherit; padding: 6px 14px; border: 1px solid var(--primary); color: var(--primary); background: #fff; border-radius: 4px; cursor: pointer; }
+.btn:hover:not(:disabled) { background: var(--primary-light); }
+.btn.primary { background: var(--primary); color: #fff; }
+.btn.primary:hover:not(:disabled) { background: #003a61; }
+.btn.small { padding: 2px 8px; font-size: 13px; }
+.btn.icon { padding: 2px 8px; border-color: transparent; }
+.btn.danger { color: var(--danger); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.chk { display: inline-flex; align-items: center; gap: 3px; margin-right: 8px; cursor: pointer; white-space: nowrap; font-size: 14px; }
+.tos { display: flex; flex-wrap: wrap; gap: 0 2px; max-width: 26em; }
+.scroll { overflow-x: auto; }
+table.grid { border-collapse: collapse; margin: 6px 0; }
+table.grid th, table.grid td { border-bottom: 1px solid #edeff1; padding: 4px 6px; text-align: left; vertical-align: top; }
+table.grid th { font-size: 12px; color: var(--sub); font-weight: 600; background: #f7f9fa; }
+table.grid td.num { text-align: right; white-space: nowrap; }
+table.grid td.id { color: var(--sub); width: 2em; }
+table.grid tr.bad td { background: var(--danger-bg); }
+.val { display: block; font-size: 12px; color: var(--sub); text-align: right; min-height: 1.2em; }
+.val.err { color: var(--danger); text-align: left; }
+/* 負担割合の表 */
+table.ratio th, table.ratio td { text-align: center; border: 1px solid #e3e7ea; }
+table.ratio th.rh { text-align: right; white-space: nowrap; }
+table.ratio td.cell { min-width: 7.2em; }
+table.ratio td.cell .pct { display: block; font-size: 12px; color: var(--sub); }
+table.ratio td.cell.zero .pct { color: #b0b5b9; }
+table.ratio td.diag { background: #f7f9fa; }
+table.ratio tr.sum td { font-size: 12.5px; background: #f7f9fa; }
+table.ratio td.na { color: #b0b5b9; }
+table.mat td { text-align: right; min-width: 7em; border: 1px solid #e3e7ea; }
+table.mat td.diag { background: #f4f5f6; color: #b0b5b9; }
+table.mat td.over { background: var(--danger-bg); color: var(--danger); font-weight: 600; }
+.axis { font-size: 12.5px; color: var(--sub); margin: 2px 0 6px; }
+.issues { margin: 4px 0 8px; padding-left: 20px; font-size: 13.5px; }
+.issues li.err { color: var(--danger); } .issues li.warn { color: var(--warn); }
+textarea.decree { width: 100%; font: inherit; font-size: 15px; line-height: 1.8; padding: 8px 10px; border: 1px solid #b9c0c6; border-radius: 4px; background: #fff; resize: vertical; }
+.decree-box { margin: 8px 0 14px; }
+.decree-box .label { font-size: 13px; color: var(--sub); margin-bottom: 2px; }
+details.opts { margin-top: 10px; font-size: 14px; }
+details.opts summary { cursor: pointer; color: var(--primary); }
+details.opts .row label { display: inline-flex; gap: 4px; align-items: center; }
+/* 冒頭の「この画面について」 */
+.intro { background: #f3f8fc; border: 1px solid #c9dceb; border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 8px 14px; margin-bottom: 14px; font-size: 14px; }
+.intro summary { cursor: pointer; font-weight: 700; color: var(--primary); }
+.intro p { margin: 6px 0; }
+.intro ul, .intro ol { margin: 4px 0; padding-left: 1.4em; }
+.intro .issue-links { font-size: 12.5px; color: var(--sub); }
+.toasts { position: fixed; top: 64px; right: 16px; display: flex; flex-direction: column; gap: 6px; z-index: 20; }
+.toast { background: #dff6dd; color: #0b5a0b; border: 1px solid #9fd89f; border-radius: 4px; padding: 8px 14px; max-width: 460px; box-shadow: 0 2px 8px rgba(0,0,0,.12); transition: opacity .5s; }
+.toast.err { background: var(--danger-bg); color: var(--danger); border-color: #f1b0b7; }
+.toast.out { opacity: 0; }
+@media print {
+  .top, .privacy, .license, .intro, .noprint, details.opts { display: none !important; }
+  .card { border: 0; padding: 0; }
+}
+.hidden-file { display: none; }

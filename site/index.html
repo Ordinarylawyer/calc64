@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<!-- 入力を外に出さないための約束: 外部との通信（fetch・XHR・WebSocket 等）を禁止し、読み込むのはこのサイトのファイルだけにする -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calc64 ― 訴訟費用負担割合計算機</title>
+<meta name="description" content="当事者間の請求額と認容額から、訴訟費用の負担割合（民訴法61条・64条）と主文例を作ります。ブラウザの中だけで動き、入力した情報をどこにも送りません。">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="icon-192.png" alt="" width="28" height="28">Calc64 <span class="brand-sub">訴訟費用負担割合計算機</span></div>
+  <div class="right"><span class="mver">v1.0.0</span></div>
+</header>
+<p class="privacy">入力した情報はこのブラウザの中だけで扱います。サーバーへの送信・保存も、サーバーからのデータの取得もしません（閉じると消えます）。続きをするときは、下の「保存・読込」で JSON ファイルを保存し、読み込みます。</p>
+<main id="app" aria-live="polite"><noscript>JavaScript を有効にしてください。</noscript></main>
+<p class="license">© 2026 Ordinarylawyer ／ プログラム: <a href="https://github.com/Ordinarylawyer/calc64/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a> ／ <a class="repo" href="https://github.com/Ordinarylawyer/calc64" target="_blank" rel="noopener noreferrer">GitHub（ソース・計算方法・誤りの報告と改善の提案）</a></p>
+<p class="license">誤りの報告・改善の提案は、<a href="https://github.com/Ordinarylawyer/calc64/issues/new/choose" target="_blank" rel="noopener noreferrer">GitHub の Issue</a> へお寄せください。事件の当事者名・事件番号など、個別の事件を特定できる情報は書かないでください。</p>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script src="js/engine/calc64.js"></script>
+<script src="js/app/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+name: 誤りの報告
+description: 負担割合の計算・分数の提案・主文例の文言などの誤りを報告する
+title: "[報告] "
+labels: ["報告"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **事件の当事者名・事件番号など、個別の事件を特定できる情報は書かないでください。** 保存した JSON もそのまま貼らないでください。計算例を示すときは、架空の事例に置き換えてください。
+  - type: textarea
+    id: target
+    attributes:
+      label: 対象
+      description: 負担割合（%）・提案された分数・主文例・金額の入力など
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 誤りの内容と、正しいと考える内容
+      description: 架空の事例（当事者の数、請求ごとの請求額・認容額）と、出た結果・正しいと考える結果
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: 根拠
+      description: 法令・文献などと、確認した日
+  - type: input
+    id: note
+    attributes:
+      label: 補足（任意）

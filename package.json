@@ -1,0 +1,8 @@
+{
+  "name": "calc64",
+  "private": true,
+  "description": "訴訟費用負担割合計算機 Calc64。ビルド不要の静的サイト。依存パッケージなし",
+  "scripts": {
+    "test": "node tests/run.mjs"
+  }
+}
