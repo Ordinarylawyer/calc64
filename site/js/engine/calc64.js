@@ -173,6 +173,7 @@
     zeroBelow: 0.005,     // これを下回る割合は 0 としてよい（民訴法64条ただし書）
     smallMax: 10,         // この分母までは、ずれが最小の分母を探す
     maxDen: 100,          // 分母の上限
+    exactFirst: true,     // 厳密な割合が分母 maxDen 以下の分数で表せるときは、その分数を先に採る
     andLast: true,        // 主文で、最後の費用の前を「及び」でつなぐ
   };
 
@@ -200,6 +201,15 @@
       if (nums.reduce((a, b) => a + b, 0) !== d) return null;
       return { den: d, nums, deviation: dev };
     };
+    // 厳密な割合が分母 maxDen 以下の分数で表せるとき（四則演算で入れた額などで起こる）は、その最小の分母
+    if (o.exactFirst) {
+      for (let d = 1; d <= o.maxDen; d++) {
+        if (r.every((v) => Math.abs(v * d - Math.round(v * d)) < 1e-9 * Math.max(1, d))) {
+          const nums = r.map((v) => Math.round(v * d));
+          if (nums.reduce((a, b) => a + b, 0) === d) return { den: d, nums, deviation: 0, fallback: false, exact: true };
+        }
+      }
+    }
     let best = null;
     for (let d = 1; d <= Math.min(o.smallMax, o.maxDen); d++) {
       const c = tryDen(d);

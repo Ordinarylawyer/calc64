@@ -80,7 +80,7 @@
         h('li', {}, '金額は「668919」「66万8919」「66万8919円」「1,000,000」のほか、四則演算（＋ − × ÷ ／ * と括弧）でも入れられます。'),
         h('li', {}, '請求される当事者を複数選ぶと（連帯請求など）、請求額・認容額をその人数で等分して計算します。等分が相当でないときは、相手方ごとに行を分けて額を入れてください。'),
         h('li', {}, '表は、行が負担する当事者、列が費用の生じた当事者です。各列の合計は 100% になります。'),
-        h('li', {}, '分数は、厳密な割合とのずれが ±15% 以内で、各列の分子の合計が分母と一致する、なるべく小さな分母のものを提案します（0.5% 未満は 0 にできます。民訴法64条ただし書）。条件は「提案の条件」で変えられます。')),
+        h('li', {}, '分数は、厳密な割合が分母 100 以下の分数で表せるときはその分数を、そうでないときは、厳密な割合とのずれが ±15% 以内で、各列の分子の合計が分母と一致する、なるべく小さな分母のものを提案します（0.5% 未満は 0 にできます。民訴法64条ただし書）。条件は「提案の条件」で変えられます。')),
       h('p', {}, '負担の定めは裁判所の裁量によります（民訴法64条）。計算の結果と主文例は、確かめてから使ってください。計算式と分数の選び方は ',
         h('a', { href: REPO + '/blob/main/docs/00_設計.md', target: '_blank', rel: 'noopener noreferrer' }, '設計（計算の考え方）'), ' にあります。'),
       h('p', { class: 'issue-links' }, '誤りの報告・改善の提案：',
@@ -273,6 +273,7 @@
         num('zeroBelow', '0 にしてよい割合', '% 未満', 100, 0, 50, 0.1),
         num('smallMax', 'ずれが最小の分母を探す範囲：分母', 'まで', 1, 1, 100, 1),
         num('maxDen', '分母の上限', '', 1, 2, 1000, 1)),
+      h('div', { class: 'row' }, h('label', { class: 'chk' }, h('input', { type: 'checkbox', checked: o.exactFirst, onchange: (e) => { o.exactFirst = e.target.checked; state.overrides = {}; renderResults(); } }), '厳密な割合が、分母の上限以下の分数で表せるときは、その分数を優先する')),
       h('div', { class: 'row' }, h('label', { class: 'chk' }, h('input', { type: 'checkbox', checked: o.andLast, onchange: (e) => { o.andLast = e.target.checked; renderResults(); } }), '主文例で、最後の費用の前を「及び」でつなぐ')),
       h('div', { class: 'row' }, h('button', { class: 'btn small', onclick: () => { state.options = Object.assign({}, C.DEFAULT_OPTIONS); state.overrides = {}; renderResults(); } }, '初めの条件に戻す')),
       h('p', { class: 'hint' }, '条件を変えると、手で直した分数は提案に戻ります。'));
